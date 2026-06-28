@@ -2,42 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Adish Ghimire - Full-Stack .NET Developer | ASP.NET Core Specialist">
+    <meta name="theme-color" content="#2563EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <title>Adish Ghimire - Full-Stack .NET Developer</title>
     
-    <!-- Google Fonts -->
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKu8zIvinjuk09h8W+5miS6kcNUU5NzcjqDltQzcnOREuga59ZNlaJGe8DA/A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
     <style>
-        /* ─────────────────────────────────────────────────────────────── */
-        /* ROOT & VARIABLES */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* ROOT & DESIGN TOKENS */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         :root {
+            /* Colors */
             --primary: #2563EB;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
             --accent: #3B82F6;
             --dark: #111827;
+            --dark-secondary: #1f2937;
             --gray: #6B7280;
+            --gray-light: #9ca3af;
             --success: #10B981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
             --light: #F8FAFC;
             --white: #FFFFFF;
             --border: #E5E7EB;
+            --border-light: #f3f4f6;
             
-            --font-grotesk: 'Space Grotesk', sans-serif;
-            --font-inter: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            /* Typography */
+            --font-grotesk: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
             
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            --space-4xl: 96px;
+            
+            /* Transitions */
+            --transition-fast: all 0.15s ease-out;
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-fast: all 0.2s ease-out;
+            --transition-slow: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-primary: 0 10px 30px rgba(37, 99, 235, 0.15);
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
-        /* RESET & GLOBAL STYLES */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* RESET & BASE STYLES */
+        /* ═══════════════════════════════════════════════════════════════ */
         
-        * {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -45,45 +90,65 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
             font-family: var(--font-inter);
-            background: #FFFFFF;
+            background-color: var(--white);
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        /* Prevent layout shift */
+        html {
+            overflow-y: scroll;
+        }
+
+        /* Screen reader only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
         /* TYPOGRAPHY */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-grotesk);
-            font-size: 72px;
             font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 8vw, 72px);
             line-height: 1.1;
             letter-spacing: -1.5px;
         }
 
         h2 {
-            font-family: var(--font-grotesk);
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 24px;
+            font-size: clamp(28px, 6vw, 48px);
+            margin-bottom: var(--space-lg);
         }
 
         h3 {
-            font-family: var(--font-grotesk);
-            font-size: 24px;
-            font-weight: 600;
+            font-size: clamp(20px, 4vw, 24px);
         }
 
         p {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--gray);
             line-height: 1.8;
         }
@@ -94,27 +159,40 @@
             transition: var(--transition-fast);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
         /* NAVBAR */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 80px;
-            background: rgba(255, 255, 255, 0);
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0);
             backdrop-filter: blur(0px);
             z-index: 1000;
             transition: var(--transition-smooth);
-            padding: 0 40px;
+            padding: 0 var(--space-lg);
+            border-bottom: 1px solid transparent;
         }
 
         nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            height: 65px;
         }
 
         .nav-container {
@@ -124,31 +202,41 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: var(--space-lg);
         }
 
         .nav-logo {
             font-family: var(--font-grotesk);
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-logo:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 2px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: var(--space-lg);
             align-items: center;
         }
 
         .nav-link {
             position: relative;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
             color: var(--dark);
-            transition: var(--transition-fast);
+            white-space: nowrap;
+            padding: var(--space-sm) 0;
         }
 
         .nav-link::after {
@@ -167,36 +255,58 @@
             width: 100%;
         }
 
+        .nav-link:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+        }
+
         .nav-buttons {
             display: flex;
-            gap: 16px;
+            gap: var(--space-md);
             align-items: center;
+            flex-shrink: 0;
         }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
             border: none;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition-smooth);
             font-family: var(--font-inter);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: white;
+            background-color: var(--primary);
+            color: var(--white);
         }
 
         .btn-primary:hover {
-            background: #1d4ed8;
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-secondary {
-            background: transparent;
+            background-color: transparent;
             color: var(--dark);
             border: 1.5px solid var(--border);
         }
@@ -204,7 +314,7 @@
         .btn-secondary:hover {
             border-color: var(--primary);
             color: var(--primary);
-            background: rgba(37, 99, 235, 0.05);
+            background-color: rgba(37, 99, 235, 0.05);
         }
 
         .hamburger {
@@ -212,24 +322,38 @@
             flex-direction: column;
             gap: 6px;
             cursor: pointer;
+            padding: var(--space-sm);
+            background: none;
+            border: none;
         }
 
         .hamburger span {
             width: 24px;
             height: 2px;
-            background: var(--dark);
+            background-color: var(--dark);
             border-radius: 2px;
             transition: var(--transition-smooth);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
         /* HERO SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .hero {
-            padding-top: 160px;
-            padding-bottom: 120px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+            padding: 100px var(--space-lg) var(--space-3xl);
+            background: linear-gradient(135deg, var(--white) 0%, var(--light) 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -237,114 +361,119 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%);
-            border-radius: 50%;
-            top: 10%;
-            right: 10%;
-            animation: float 6s ease-in-out infinite;
-        }
-
+        .hero::before,
         .hero::after {
             content: '';
             position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::before {
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0) 70%);
-            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .hero::after {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
             bottom: -10%;
             left: 5%;
-            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
         }
 
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px;
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: var(--space-3xl);
             align-items: center;
             position: relative;
             z-index: 2;
         }
 
         .hero-content h1 {
-            margin-bottom: 24px;
+            margin-bottom: var(--space-lg);
             color: var(--dark);
         }
 
         .typing-effect {
-            display: inline-block;
-            font-size: 72px;
+            display: block;
+            font-size: clamp(32px, 7vw, 72px);
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            min-height: 86px;
+            min-height: 80px;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 20px;
+            font-size: 16px;
             color: var(--gray);
-            margin: 32px 0;
+            margin: var(--space-xl) 0;
             line-height: 1.8;
+            max-width: 90%;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 16px;
-            margin-top: 40px;
+            gap: var(--space-md);
+            margin-top: var(--space-2xl);
+            flex-wrap: wrap;
         }
 
         .hero-image {
             position: relative;
-            height: 500px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 300px;
         }
 
         .image-placeholder {
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
-            border-radius: 16px;
+            border-radius: var(--radius-xl);
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray);
             overflow: hidden;
             position: relative;
         }
 
-        .image-placeholder::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect fill="%23f8fafc" width="400" height="500"/><circle cx="200" cy="150" r="80" fill="%232563eb" opacity="0.1"/><rect x="50" y="300" width="300" height="150" fill="%233b82f6" opacity="0.05" rx="8"/></svg>');
-            background-size: cover;
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         /* SECTIONS */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         section {
-            padding: 120px 40px;
-            background: #FFFFFF;
+            padding: var(--space-3xl) var(--space-lg);
+            background-color: var(--white);
+            position: relative;
         }
 
         section:nth-child(even) {
-            background: #F8FAFC;
+            background-color: var(--light);
         }
 
         .section-container {
@@ -354,89 +483,92 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 80px;
-            animation: fadeUp 0.8s ease-out;
+            margin-bottom: var(--space-3xl);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        .section-title h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
         /* ABOUT SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: var(--space-3xl);
             align-items: center;
         }
 
         .about-image {
             position: relative;
-            height: 450px;
+            height: 400px;
+            min-height: 300px;
         }
 
-        .about-image img,
         .about-image .image-placeholder {
             width: 100%;
             height: 100%;
-            border-radius: 16px;
-            object-fit: cover;
-            border: 1px solid var(--border);
         }
 
         .about-content h3 {
-            margin-bottom: 16px;
+            margin-bottom: var(--space-md);
             color: var(--primary);
-            font-size: 16px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .about-content p {
-            margin-bottom: 32px;
+            margin-bottom: var(--space-lg);
         }
 
         .about-stats {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-top: 48px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-2xl);
         }
 
         .stat-card {
-            padding: 24px;
-            background: white;
+            padding: var(--space-lg);
+            background-color: var(--white);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             transition: var(--transition-smooth);
+            text-align: center;
         }
 
         .stat-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow-primary);
             transform: translateY(-4px);
         }
 
         .stat-number {
             font-family: var(--font-grotesk);
-            font-size: 42px;
+            font-size: clamp(28px, 5vw, 42px);
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: var(--space-sm);
+            line-height: 1;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray);
             font-weight: 500;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         /* EXPERIENCE SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .timeline {
             position: relative;
-            padding: 40px 0;
+            padding: var(--space-lg) 0;
         }
 
         .timeline::before {
@@ -450,7 +582,7 @@
         }
 
         .timeline-item {
-            margin-bottom: 60px;
+            margin-bottom: var(--space-2xl);
             position: relative;
         }
 
@@ -472,506 +604,206 @@
             transform: translateX(-50%);
             width: 16px;
             height: 16px;
-            background: var(--primary);
-            border: 4px solid #FFFFFF;
+            background-color: var(--primary);
+            border: 4px solid var(--white);
             border-radius: 50%;
             top: 30px;
-            box-shadow: 0 0 0 1px var(--border);
+            box-shadow: 0 0 0 1px var(--border), var(--shadow-primary);
             animation: pulse 2s ease-in-out infinite;
+            z-index: 1;
         }
 
         .timeline-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             transition: var(--transition-smooth);
         }
 
         .timeline-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.15);
+            box-shadow: var(--shadow-primary);
             transform: translateY(-4px);
         }
 
         .timeline-date {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .timeline-title {
             font-family: var(--font-grotesk);
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: var(--space-sm);
         }
 
         .timeline-company {
             color: var(--gray);
-            font-size: 16px;
-            margin-bottom: 16px;
+            font-size: 14px;
+            margin-bottom: var(--space-md);
+            font-weight: 500;
         }
 
         .timeline-description {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray);
             line-height: 1.7;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         /* SKILLS SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
         }
 
         .skill-category {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             transition: var(--transition-smooth);
         }
 
         .skill-category:hover {
             border-color: var(--primary);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow-primary);
             transform: translateY(-4px);
         }
 
         .skill-category h3 {
-            margin-bottom: 24px;
+            margin-bottom: var(--space-lg);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: var(--space-md);
         }
 
         .skill-icon {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--white);
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
         .skill-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: var(--space-md);
         }
 
         .skill-badge {
             display: inline-block;
-            padding: 10px 16px;
-            background: #F8FAFC;
+            padding: 8px 14px;
+            background-color: var(--light);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
             font-weight: 500;
             color: var(--dark);
             transition: var(--transition-smooth);
+            cursor: default;
         }
 
         .skill-badge:hover {
-            background: var(--primary);
-            color: white;
+            background-color: var(--primary);
+            color: var(--white);
             border-color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+            box-shadow: var(--shadow-primary);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
-        /* PROJECTS SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 32px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-            transform: translateY(-8px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 240px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><rect fill="%23f8fafc" width="400" height="240"/><rect x="20" y="20" width="360" height="200" fill="%232563eb" opacity="0.05" rx="8"/></svg>');
-            background-size: cover;
-        }
-
-        .project-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: var(--success);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            z-index: 10;
-        }
-
-        .project-content {
-            padding: 32px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-family: var(--font-grotesk);
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .project-description {
-            font-size: 16px;
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .tech-tag {
-            font-size: 13px;
-            background: #F8FAFC;
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-            margin-top: auto;
-        }
-
-        .project-link {
-            flex: 1;
-            padding: 12px;
-            text-align: center;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        .project-link:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(37, 99, 235, 0.05);
-        }
-
-        /* ─────────────────────────────────────────────────────────────── */
-        /* CERTIFICATIONS SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
-        
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-        }
-
-        .cert-card {
-            aspect-ratio: 1;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cert-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
-            opacity: 0;
-            transition: var(--transition-smooth);
-        }
-
-        .cert-card:hover {
-            border-color: var(--primary);
-            transform: scale(1.05) rotateY(5deg);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.2);
-        }
-
-        .cert-card:hover::before {
-            opacity: 1;
-        }
-
-        .cert-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .cert-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .cert-name {
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--dark);
-        }
-
-        .cert-issuer {
-            font-size: 12px;
-            color: var(--gray);
-            margin-top: 4px;
-        }
-
-        /* ─────────────────────────────────────────────────────────────── */
-        /* SERVICES SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .service-card {
-            padding: 40px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            text-align: center;
-            transition: var(--transition-smooth);
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
-            transform: translateY(-8px);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 32px;
-        }
-
-        .service-title {
-            font-family: var(--font-grotesk);
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .service-description {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* ─────────────────────────────────────────────────────────────── */
-        /* TESTIMONIALS SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
-        
-        .testimonials-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials-slider {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            animation: slide 12s linear infinite;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 12px;
-            padding: 32px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            color: var(--dark);
-            line-height: 1.8;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 20px;
-        }
-
-        .author-info h4 {
-            font-family: var(--font-grotesk);
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .author-role {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         /* EDUCATION SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
         }
 
         .education-card {
-            background: white;
-            border-radius: 12px;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             overflow: hidden;
             transition: var(--transition-smooth);
-            padding: 32px;
+            padding: var(--space-xl);
         }
 
         .education-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.15);
+            box-shadow: var(--shadow-primary);
             transform: translateY(-4px);
         }
 
         .education-header {
             display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
             align-items: flex-start;
         }
 
         .degree-icon {
             font-size: 40px;
             min-width: 50px;
+            flex-shrink: 0;
         }
 
         .degree-info h3 {
-            font-family: var(--font-grotesk);
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 16px;
+            margin-bottom: var(--space-sm);
             color: var(--dark);
         }
 
         .institution {
-            font-size: 15px;
+            font-size: 13px;
             color: var(--primary);
             font-weight: 600;
-            margin: 0 !important;
         }
 
-        .timeline {
-            font-size: 14px;
+        .timeline-info {
+            font-size: 12px;
             color: var(--gray);
-            margin-top: 4px !important;
+            margin-top: var(--space-sm);
         }
 
         .education-content p {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--gray);
             line-height: 1.7;
-            margin: 0;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
-        /* TEACHING EXPERTISE SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* TEACHING SECTION */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .teaching-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
         }
 
         .teaching-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             text-align: center;
             transition: var(--transition-smooth);
@@ -982,44 +814,43 @@
 
         .teaching-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow-primary);
             transform: translateY(-4px);
         }
 
         .teaching-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            display: block;
+            font-size: 44px;
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            height: 50px;
         }
 
         .teaching-card h3 {
-            font-family: var(--font-grotesk);
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-size: 16px;
+            margin-bottom: var(--space-md);
             color: var(--dark);
         }
 
         .teaching-card p {
-            font-size: 15px;
+            font-size: 13px;
             color: var(--gray);
             line-height: 1.6;
-            margin: 0;
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         /* BLOG SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
         }
 
         .blog-card {
-            background: white;
-            border-radius: 12px;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
             overflow: hidden;
             transition: var(--transition-smooth);
@@ -1029,74 +860,74 @@
 
         .blog-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-            transform: translateY(-8px);
+            box-shadow: var(--shadow-primary);
+            transform: translateY(-4px);
         }
 
         .blog-header {
-            padding: 32px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.08));
             border-bottom: 1px solid var(--border);
         }
 
         .blog-category {
             display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
             color: var(--primary);
-            background: rgba(37, 99, 235, 0.1);
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin-bottom: 16px;
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 5px 10px;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-md);
             letter-spacing: 0.5px;
         }
 
         .blog-title {
             font-family: var(--font-grotesk);
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: var(--space-sm);
             color: var(--dark);
             line-height: 1.4;
         }
 
         .blog-date {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--gray);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--space-sm);
         }
 
         .blog-content {
-            padding: 32px;
+            padding: var(--space-lg);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .blog-excerpt {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray);
             line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: var(--space-lg);
             flex-grow: 1;
         }
 
         .blog-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
         }
 
         .blog-tag {
-            font-size: 12px;
-            background: #F8FAFC;
+            font-size: 11px;
+            background-color: var(--light);
             color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
         }
 
@@ -1104,12 +935,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 16px;
+            padding-top: var(--space-md);
             border-top: 1px solid var(--border);
         }
 
         .blog-author {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray);
             font-weight: 500;
         }
@@ -1117,136 +948,203 @@
         .blog-read-more {
             color: var(--primary);
             font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition-smooth);
+            font-size: 12px;
+            transition: var(--transition-fast);
             cursor: pointer;
         }
 
         .blog-read-more:hover {
-            color: #1d4ed8;
+            color: var(--primary-dark);
+            transform: translateX(2px);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         /* CONTACT SECTION */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: var(--space-3xl);
             align-items: start;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: var(--space-2xl);
         }
 
         .contact-item {
             display: flex;
-            gap: 24px;
+            gap: var(--space-lg);
+            align-items: flex-start;
         }
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
+            color: var(--white);
+            font-size: 22px;
             flex-shrink: 0;
         }
 
         .contact-content h4 {
             font-family: var(--font-grotesk);
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: var(--space-sm);
         }
 
         .contact-content p {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--gray);
+            margin: 0;
+        }
+
+        .contact-content a {
+            color: var(--primary);
+        }
+
+        .contact-content a:hover {
+            color: var(--primary-dark);
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
+            gap: var(--space-lg);
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: var(--space-sm);
         }
 
         .form-group label {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--dark);
         }
 
         .form-group input,
         .form-group textarea {
-            padding: 14px 16px;
+            padding: 12px 14px;
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             font-family: var(--font-inter);
-            font-size: 16px;
+            font-size: 14px;
             transition: var(--transition-smooth);
-            background: #F8FAFC;
+            background-color: var(--light);
+            color: var(--dark);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
-            background: white;
+            background-color: var(--white);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray-light);
         }
 
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
+            font-family: var(--font-inter);
         }
 
         .form-group button {
-            padding: 14px 24px;
-            background: var(--primary);
-            color: white;
+            padding: 12px var(--space-lg);
+            background-color: var(--primary);
+            color: var(--white);
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition-smooth);
-            margin-top: 12px;
+            margin-top: var(--space-sm);
+            font-family: var(--font-inter);
         }
 
         .form-group button:hover {
-            background: #1d4ed8;
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            box-shadow: var(--shadow-primary);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        .form-group button:active {
+            transform: translateY(0);
+        }
+
+        .form-group button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* SOCIAL LINKS */
+        /* ═══════════════════════════════════════════════════════════════ */
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: var(--space-lg);
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .social-link:focus-visible {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
         /* FOOTER */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-lg);
         }
 
         .footer-container {
@@ -1258,70 +1156,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: var(--space-xl);
             flex-wrap: wrap;
-            gap: 24px;
+            gap: var(--space-lg);
         }
 
         .footer-text {
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .back-to-top {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .back-to-top.visible {
-            display: flex;
-        }
-
-        .back-to-top:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
         }
 
         footer hr {
             border: none;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 40px 0;
+            margin: var(--space-xl) 0;
         }
 
         .footer-bottom {
@@ -1329,48 +1177,57 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: var(--space-lg);
         }
 
         .copyright {
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* ─────────────────────────────────────────────────────────────── */
+        .back-to-top {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            border: none;
+            border-radius: var(--radius-md);
+            color: var(--white);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            padding: 0;
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .back-to-top:focus-visible {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
         /* ANIMATIONS */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
@@ -1392,69 +1249,16 @@
             }
         }
 
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-33.333%);
-            }
-        }
-
-        /* ─────────────────────────────────────────────────────────────── */
-        /* RESPONSIVE DESIGN */
-        /* ─────────────────────────────────────────────────────────────── */
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* TABLET RESPONSIVE */
+        /* ═══════════════════════════════════════════════════════════════ */
         
         @media (max-width: 1024px) {
-            h1 {
-                font-size: 56px;
-            }
-
-            h2 {
-                font-size: 42px;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-
-            .hero-image {
-                height: 400px;
-            }
-
+            .hero-container,
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 60px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .teaching-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-links {
-                gap: 24px;
-            }
-
-            section {
-                padding: 80px 40px;
+                gap: var(--space-2xl);
             }
 
             .timeline::before {
@@ -1470,57 +1274,21 @@
             .timeline-dot {
                 left: 20px;
             }
-        }
 
-        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
             .hamburger {
                 display: flex;
             }
 
-            .nav-links,
-            .nav-buttons {
-                display: none;
-            }
-
-            nav {
-                padding: 0 20px;
-            }
-
-            h1 {
-                font-size: 42px;
-            }
-
-            h2 {
-                font-size: 32px;
-            }
-
-            .hero {
-                padding-top: 100px;
-                padding-bottom: 60px;
-            }
-
-            .hero-container {
-                padding: 0 20px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
             .about-stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
 
             .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .education-grid {
@@ -1528,24 +1296,95 @@
             }
 
             .teaching-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* MOBILE RESPONSIVE */
+        /* ═══════════════════════════════════════════════════════════════ */
+        
+        @media (max-width: 768px) {
+            :root {
+                --space-lg: 16px;
+                --space-xl: 24px;
+                --space-2xl: 32px;
+                --space-3xl: 48px;
+            }
+
+            nav {
+                height: 60px;
+                padding: 0 var(--space-md);
+            }
+
+            nav.scrolled {
+                height: 60px;
+            }
+
+            .nav-container {
+                gap: var(--space-md);
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+
+            .hero {
+                padding: 80px var(--space-md) var(--space-2xl);
+                min-height: auto;
+            }
+
+            .hero-container {
+                gap: var(--space-2xl);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .about-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .skills-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid,
+            .teaching-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-card,
+            .timeline-item:nth-child(even) .timeline-card {
+                margin-left: 40px;
+                width: calc(100% - 40px);
+            }
+
+            .timeline-dot {
+                left: 12px;
+                width: 14px;
+                height: 14px;
+                top: 28px;
             }
 
             .contact-form {
-                padding: 24px;
-            }
-
-            .section-container,
-            .footer-container {
-                padding: 0 20px;
-            }
-
-            section {
-                padding: 60px 20px;
-            }
-
-            .testimonials-slider {
-                grid-template-columns: 1fr;
+                padding: var(--space-lg);
             }
 
             .footer-content {
@@ -1555,55 +1394,145 @@
             .footer-bottom {
                 flex-direction: column;
             }
-        }
 
-        @media (max-width: 480px) {
             h1 {
-                font-size: 32px;
+                font-size: clamp(28px, 7vw, 56px);
             }
 
             h2 {
-                font-size: 24px;
-            }
-
-            .nav-logo {
-                font-size: 16px;
-            }
-
-            .certifications-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
+                font-size: clamp(24px, 6vw, 36px);
             }
 
             .section-title {
-                margin-bottom: 40px;
+                margin-bottom: var(--space-2xl);
             }
 
-            .timeline::before {
-                left: 12px;
+            section {
+                padding: var(--space-2xl) var(--space-md);
             }
 
-            .timeline-dot {
-                left: 12px;
+            .social-links {
+                gap: var(--space-sm);
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* EXTRA SMALL DEVICES */
+        /* ═══════════════════════════════════════════════════════════════ */
+        
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 var(--space-sm);
+            }
+
+            .nav-logo {
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 70px var(--space-sm) var(--space-xl);
+            }
+
+            .hero-image {
+                height: 280px;
+            }
+
+            .typing-effect {
+                min-height: 60px;
+            }
+
+            .hero-subtitle {
+                max-width: 100%;
+                font-size: 14px;
+            }
+
+            .timeline-item {
+                margin-bottom: var(--space-xl);
             }
 
             .timeline-item:nth-child(odd) .timeline-card,
             .timeline-item:nth-child(even) .timeline-card {
-                margin-left: 40px;
-                width: calc(100% - 40px);
+                margin-left: 35px;
+                width: calc(100% - 35px);
             }
+
+            .stat-card {
+                padding: var(--space-md);
+            }
+
+            .stat-number {
+                font-size: clamp(22px, 6vw, 32px);
+            }
+
+            .contact-form {
+                padding: var(--space-md);
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            section {
+                padding: var(--space-xl) var(--space-sm);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════ */
+        /* ACCESSIBILITY */
+        /* ═══════════════════════════════════════════════════════════════ */
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: more) {
+            :root {
+                --border: #d1d5db;
+                --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Loading state */
+        .is-loading {
+            opacity: 0.6;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
+    <!-- SKIP TO MAIN CONTENT -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
     <!-- NAVBAR -->
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="nav-logo">Adish Ghimire</div>
-            <ul class="nav-links">
+            <a href="#" class="nav-logo" aria-label="Adish Ghimire - Home">Adish Ghimire</a>
+            
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -1612,658 +1541,545 @@
                 <li><a href="#blog" class="nav-link">Blog</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            
             <div class="nav-buttons">
-                <button class="btn btn-secondary">Resume</button>
-                <button class="btn btn-primary">Let's Talk</button>
+                <a href="#contact" class="btn btn-secondary">Resume</a>
+                <a href="#contact" class="btn btn-primary">Let's Talk</a>
             </div>
-            <div class="hamburger">
+            
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="typing-effect" id="typingEffect">Full-Stack .NET Developer</div>
-                <p class="hero-subtitle">Crafting enterprise applications with ASP.NET Core, cloud-native solutions, and sharing knowledge through practical education and technical writing.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">View My Work</button>
-                    <button class="btn btn-secondary">Download CV</button>
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+        <!-- HERO SECTION -->
+        <section class="hero" aria-label="Hero section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="typing-effect" id="typingEffect" aria-live="polite">Full-Stack .NET Developer</div>
+                    <p class="hero-subtitle">Crafting enterprise applications with ASP.NET Core, cloud-native solutions, and sharing knowledge through practical education and technical writing.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Download CV</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder" aria-label="Hero image placeholder">
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+                            <rect fill='#f8fafc' width='400' height='400'/>
+                            <circle cx='200' cy='150' r='70' fill='#2563eb' opacity='0.08'/>
+                            <path d='M100 250 L200 200 L300 250 L300 350 L100 350 Z' fill='#3b82f6' opacity='0.05'/>
+                        </svg>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="image-placeholder"></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>About Me</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-placeholder"></div>
+        <!-- ABOUT SECTION -->
+        <section id="about" aria-label="About section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>About Me</h2>
                 </div>
-                <div class="about-content">
-                    <h3>Full-Stack .NET Development</h3>
-                    <p>Experienced .NET Developer with 3+ years of professional expertise in building scalable web and serverless applications. Specialized in ASP.NET Core, React.js, SQL Server, and AWS technologies. Strong foundation in Object-Oriented Programming, Design Patterns, and Software Architecture principles.</p>
-                    <p>Passionate about creating enterprise-level solutions with clean, maintainable code and dedicated to sharing knowledge through teaching, mentoring, and technical writing. Currently pursuing Master of Computer Science while developing cutting-edge applications at Sagarmatha Lumbini Insurance Company.</p>
-                    <div class="about-stats">
-                        <div class="stat-card">
-                            <div class="stat-number">3+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">20+</div>
-                            <div class="stat-label">Technologies</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Enterprise Projects</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">MCS</div>
-                            <div class="stat-label">Pursuing Now</div>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="image-placeholder" aria-label="About section image">
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+                                <rect fill='#f8fafc' width='400' height='400'/>
+                                <circle cx='200' cy='150' r='80' fill='#2563eb' opacity='0.1'/>
+                                <rect x='50' y='300' width='300' height='150' fill='#3b82f6' opacity='0.05' rx='8'/>
+                            </svg>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Professional Experience</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-date">Sep 2025 - Present</div>
-                        <div class="timeline-title">.NET Developer</div>
-                        <div class="timeline-company">Sagarmatha Lumbini Insurance Company</div>
-                        <div class="timeline-description">Developing enterprise applications using ASP.NET Core and SQL Server. Building RESTful APIs for Angular and React.js frontends. Designing optimized database schemas and applying software engineering best practices.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-date">Nov 2022 - Sep 2025</div>
-                        <div class="timeline-title">.NET Developer</div>
-                        <div class="timeline-company">Arhant Solution</div>
-                        <div class="timeline-description">Designed and developed RESTful APIs using ASP.NET Web API. Built and maintained enterprise-level systems with ASP.NET Core, MVC, and SQL Server. Authored optimized T-SQL queries and stored procedures. Delivered complete software modules on time.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-date">May 2022 - Nov 2022</div>
-                        <div class="timeline-title">Intern - .NET / Cloud Developer</div>
-                        <div class="timeline-company">Nep Innovations Technologies Pvt. Ltd</div>
-                        <div class="timeline-description">Developed serverless applications using AWS Lambda, API Gateway, and CDK. Managed and optimized Amazon DynamoDB. Configured S3 for secure data storage. Upgraded Umbraco CMS with custom components.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Technical Skills</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>
-                        <span class="skill-icon">💻</span>
-                        Backend
-                    </h3>
-                    <div class="skill-badges">
-                        <div class="skill-badge">ASP.NET Core</div>
-                        <div class="skill-badge">ASP.NET MVC</div>
-                        <div class="skill-badge">C#</div>
-                        <div class="skill-badge">Python</div>
-                        <div class="skill-badge">Java</div>
-                        <div class="skill-badge">Node.js</div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>
-                        <span class="skill-icon">🎨</span>
-                        Frontend
-                    </h3>
-                    <div class="skill-badges">
-                        <div class="skill-badge">React.js</div>
-                        <div class="skill-badge">Angular</div>
-                        <div class="skill-badge">JavaScript</div>
-                        <div class="skill-badge">HTML5</div>
-                        <div class="skill-badge">CSS3</div>
-                        <div class="skill-badge">jQuery</div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>
-                        <span class="skill-icon">☁️</span>
-                        Database & Cloud
-                    </h3>
-                    <div class="skill-badges">
-                        <div class="skill-badge">SQL Server</div>
-                        <div class="skill-badge">T-SQL</div>
-                        <div class="skill-badge">AWS Lambda</div>
-                        <div class="skill-badge">DynamoDB</div>
-                        <div class="skill-badge">S3</div>
-                        <div class="skill-badge">API Gateway</div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>
-                        <span class="skill-icon">🛠️</span>
-                        Tools & Practices
-                    </h3>
-                    <div class="skill-badges">
-                        <div class="skill-badge">Git</div>
-                        <div class="skill-badge">REST APIs</div>
-                        <div class="skill-badge">Design Patterns</div>
-                        <div class="skill-badge">OOP</div>
-                        <div class="skill-badge">Software Architecture</div>
-                        <div class="skill-badge">VS Code</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Featured Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-badge">Featured</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Insurance Management System</h3>
-                        <p class="project-description">Enterprise-grade insurance platform built with ASP.NET Core and React.js. Handles policy management, claims processing, and customer dashboards with optimized SQL Server queries.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">ASP.NET Core</span>
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">SQL Server</span>
-                            <span class="tech-tag">RESTful APIs</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Demo</a>
-                            <a href="#" class="project-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-badge">Featured</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Serverless AWS Lambda APIs</h3>
-                        <p class="project-description">Scalable serverless architecture using AWS Lambda, API Gateway, and DynamoDB. Implemented event-driven microservices with cost optimization and high availability.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">AWS Lambda</span>
-                            <span class="tech-tag">DynamoDB</span>
-                            <span class="tech-tag">API Gateway</span>
-                            <span class="tech-tag">CloudFormation</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Demo</a>
-                            <a href="#" class="project-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-badge">Featured</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Commerce Web API</h3>
-                        <p class="project-description">Full-featured RESTful API for e-commerce platform built with ASP.NET Web API. Includes product catalog, shopping cart, order management, and payment integration.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">ASP.NET Web API</span>
-                            <span class="tech-tag">Entity Framework</span>
-                            <span class="tech-tag">SQL Server</span>
-                            <span class="tech-tag">JWT Auth</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Demo</a>
-                            <a href="#" class="project-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section id="services">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Services</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3 class="service-title">Enterprise Development</h3>
-                    <p class="service-description">Building scalable, production-ready applications for large organizations with complex requirements and high availability needs.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔌</div>
-                    <h3 class="service-title">API Architecture</h3>
-                    <p class="service-description">Designing and implementing RESTful and GraphQL APIs that scale efficiently and maintain excellent developer experience.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">☁️</div>
-                    <h3 class="service-title">Cloud Solutions</h3>
-                    <p class="service-description">Architecting and migrating systems to cloud platforms with optimization for performance, cost, and security.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📚</div>
-                    <h3 class="service-title">Technical Mentoring</h3>
-                    <p class="service-description">Mentoring developers and teams to build better software through code reviews, architecture guidance, and best practices.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3 class="service-title">Tech Training</h3>
-                    <p class="service-description">Delivering workshops and training programs on modern technologies, best practices, and industry standards.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏗️</div>
-                    <h3 class="service-title">Technical Consulting</h3>
-                    <p class="service-description">Providing strategic guidance on technology stack selection, system design, and technical roadmap planning.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section id="testimonials">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>What People Say</h2>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonials-slider">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Alex's expertise in cloud architecture transformed our infrastructure. The system now handles 10x the traffic with improved reliability."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">JD</div>
-                            <div class="author-info">
-                                <h4>Jane Doe</h4>
-                                <p class="author-role">CTO, Tech Corp</p>
+                    <div class="about-content">
+                        <h3>Full-Stack .NET Development</h3>
+                        <p>Experienced .NET Developer with 3+ years of professional expertise in building scalable web and serverless applications. Specialized in ASP.NET Core, React.js, SQL Server, and AWS technologies. Strong foundation in Object-Oriented Programming, Design Patterns, and Software Architecture principles.</p>
+                        <p>Passionate about creating enterprise-level solutions with clean, maintainable code and dedicated to sharing knowledge through teaching, mentoring, and technical writing. Currently pursuing Master of Computer Science while developing cutting-edge applications at Sagarmatha Lumbini Insurance Company.</p>
+                        <div class="about-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years Experience</div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Working with Alex as a mentor accelerated my growth as an engineer. His insights on system design are invaluable."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">MS</div>
-                            <div class="author-info">
-                                <h4>Mike Smith</h4>
-                                <p class="author-role">Senior Developer</p>
+                            <div class="stat-card">
+                                <div class="stat-number">20+</div>
+                                <div class="stat-label">Technologies</div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The CRM platform delivered by Alex and his team exceeded all expectations. It's now core to our business operations."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">SJ</div>
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <p class="author-role">Product Manager</p>
+                            <div class="stat-card">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Enterprise Projects</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">MCS</div>
+                                <div class="stat-label">Pursuing Now</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EDUCATION SECTION -->
-    <section id="education">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Education & Certifications</h2>
-            </div>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-header">
-                        <div class="degree-icon">🎓</div>
-                        <div class="degree-info">
-                            <h3>Master of Computer Science (MCS)</h3>
-                            <p class="institution">Lincoln University College</p>
-                            <p class="timeline">2025 – Present</p>
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" aria-label="Experience section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>Professional Experience</h2>
+                </div>
+                <div class="timeline" role="list">
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Sep 2025 - Present</div>
+                            <h3 class="timeline-title">.NET Developer</h3>
+                            <p class="timeline-company">Sagarmatha Lumbini Insurance Company</p>
+                            <p class="timeline-description">Developing enterprise applications using ASP.NET Core and SQL Server. Building RESTful APIs for Angular and React.js frontends. Designing optimized database schemas and applying software engineering best practices.</p>
                         </div>
                     </div>
-                    <div class="education-content">
-                        <p>Pursuing advanced studies in Computer Science with focus on software architecture, system design, and enterprise-level application development.</p>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-header">
-                        <div class="degree-icon">📚</div>
-                        <div class="degree-info">
-                            <h3>Bachelor of Science in Computer Science & IT (B.Sc. CSIT)</h3>
-                            <p class="institution">Tribhuvan University</p>
-                            <p class="timeline">2017 – 2021</p>
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Nov 2022 - Sep 2025</div>
+                            <h3 class="timeline-title">.NET Developer</h3>
+                            <p class="timeline-company">Arhant Solution</p>
+                            <p class="timeline-description">Designed and developed RESTful APIs using ASP.NET Web API. Built and maintained enterprise-level systems with ASP.NET Core, MVC, and SQL Server. Authored optimized T-SQL queries and stored procedures. Delivered complete software modules on time.</p>
                         </div>
                     </div>
-                    <div class="education-content">
-                        <p>Comprehensive foundation in Computer Science covering programming, data structures, algorithms, databases, and software engineering principles.</p>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-header">
-                        <div class="degree-icon">🏆</div>
-                        <div class="degree-info">
-                            <h3>Mastering Software Architecture Training</h3>
-                            <p class="institution">Professional Workshop</p>
-                            <p class="timeline">Completed</p>
-                        </div>
-                    </div>
-                    <div class="education-content">
-                        <p>Specialized training focused on system design, scalability patterns, enterprise architecture, and advanced software engineering practices.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TEACHING EXPERTISE SECTION -->
-    <section id="teaching">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Teaching Expertise</h2>
-            </div>
-            <div class="teaching-grid">
-                <div class="teaching-card">
-                    <div class="teaching-icon">💻</div>
-                    <h3>Programming Languages</h3>
-                    <p>Computer Programming in C, Object-Oriented Programming in C++, Java Programming, Python Basics</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-icon">📊</div>
-                    <h3>Core Computer Science</h3>
-                    <p>Data Structures & Algorithms, Database Management System (DBMS), Web Technology & Programming</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-icon">🏗️</div>
-                    <h3>Software Engineering</h3>
-                    <p>Software Engineering, Object-Oriented Analysis & Design, SDLC and System Design, Design Patterns</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-icon">🤖</div>
-                    <h3>Advanced Topics</h3>
-                    <p>Artificial Intelligence, E-Commerce Systems, Enterprise Architecture, Cloud Computing</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-icon">👥</div>
-                    <h3>Teaching Strengths</h3>
-                    <p>Practical concept-oriented approach, Strong classroom management, Industry-oriented examples, Project-based learning</p>
-                </div>
-
-                <div class="teaching-card">
-                    <div class="teaching-icon">🎯</div>
-                    <h3>Student Development</h3>
-                    <p>Ability to simplify complex concepts, Experience guiding programming projects, Mentoring & lab sessions, Industry-practical skills</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BLOG SECTION -->
-    <section id="blog">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Latest Articles</h2>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-category">ASP.NET Core</div>
-                        <h3 class="blog-title">Building Scalable REST APIs with ASP.NET Core</h3>
-                        <p class="blog-date">📅 December 15, 2024</p>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Learn how to design and implement RESTful APIs using ASP.NET Core with best practices for scalability, performance, and maintainability. We'll explore middleware, dependency injection, and proper error handling.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">ASP.NET Core</span>
-                            <span class="blog-tag">REST API</span>
-                            <span class="blog-tag">C#</span>
-                        </div>
-                        <div class="blog-footer">
-                            <span class="blog-author">By Adish Ghimire</span>
-                            <span class="blog-read-more">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-category">Database Design</div>
-                        <h3 class="blog-title">SQL Server Optimization Techniques for Performance</h3>
-                        <p class="blog-date">📅 December 10, 2024</p>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Deep dive into SQL Server optimization techniques including indexing strategies, query optimization, execution plans analysis, and performance tuning. Improve your database query performance significantly.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">SQL Server</span>
-                            <span class="blog-tag">Database</span>
-                            <span class="blog-tag">Performance</span>
-                        </div>
-                        <div class="blog-footer">
-                            <span class="blog-author">By Adish Ghimire</span>
-                            <span class="blog-read-more">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-category">Cloud Architecture</div>
-                        <h3 class="blog-title">Serverless Architecture with AWS Lambda and API Gateway</h3>
-                        <p class="blog-date">📅 December 5, 2024</p>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Explore serverless architecture patterns using AWS Lambda, API Gateway, and DynamoDB. Learn how to build cost-effective, scalable applications without managing infrastructure.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">AWS</span>
-                            <span class="blog-tag">Lambda</span>
-                            <span class="blog-tag">Serverless</span>
-                        </div>
-                        <div class="blog-footer">
-                            <span class="blog-author">By Adish Ghimire</span>
-                            <span class="blog-read-more">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-category">Design Patterns</div>
-                        <h3 class="blog-title">SOLID Principles in .NET Development</h3>
-                        <p class="blog-date">📅 November 28, 2024</p>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Understand and apply SOLID principles in your .NET projects. We'll cover Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion with practical examples.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">SOLID</span>
-                            <span class="blog-tag">Design Patterns</span>
-                            <span class="blog-tag">.NET</span>
-                        </div>
-                        <div class="blog-footer">
-                            <span class="blog-author">By Adish Ghimire</span>
-                            <span class="blog-read-more">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-category">Frontend Integration</div>
-                        <h3 class="blog-title">React.js with ASP.NET Core: Full-Stack Development</h3>
-                        <p class="blog-date">📅 November 20, 2024</p>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Master full-stack development by combining React.js frontend with ASP.NET Core backend. Learn about API integration, authentication, and deployment strategies for production-ready applications.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">React</span>
-                            <span class="blog-tag">ASP.NET Core</span>
-                            <span class="blog-tag">Full-Stack</span>
-                        </div>
-                        <div class="blog-footer">
-                            <span class="blog-author">By Adish Ghimire</span>
-                            <span class="blog-read-more">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-category">Teaching & Learning</div>
-                        <h3 class="blog-title">Effective Teaching Strategies for Programming Concepts</h3>
-                        <p class="blog-date">📅 November 15, 2024</p>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Share insights on teaching complex programming concepts effectively. Covering practical lab sessions, project-based learning, mentoring approaches, and bridging the gap between theory and industry practice.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Teaching</span>
-                            <span class="blog-tag">Education</span>
-                            <span class="blog-tag">Mentoring</span>
-                        </div>
-                        <div class="blog-footer">
-                            <span class="blog-author">By Adish Ghimire</span>
-                            <span class="blog-read-more">Read More →</span>
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">May 2022 - Nov 2022</div>
+                            <h3 class="timeline-title">Intern - .NET / Cloud Developer</h3>
+                            <p class="timeline-company">Nep Innovations Technologies Pvt. Ltd</p>
+                            <p class="timeline-description">Developed serverless applications using AWS Lambda, API Gateway, and CDK. Managed and optimized Amazon DynamoDB. Configured S3 for secure data storage. Upgraded Umbraco CMS with custom components.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <div class="section-container">
-            <div class="section-title">
-                <h2>Get In Touch</h2>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-content">
-                            <h4>Email</h4>
-                            <p>adish.ghimire12@gmail.com</p>
+        <!-- SKILLS SECTION -->
+        <section id="skills" aria-label="Skills section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>Technical Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>
+                            <span class="skill-icon">💻</span>
+                            Backend
+                        </h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">ASP.NET Core</span>
+                            <span class="skill-badge">ASP.NET MVC</span>
+                            <span class="skill-badge">C#</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">Node.js</span>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-content">
-                            <h4>Location</h4>
-                            <p>Kalanki, Kathmandu, Nepal</p>
+                    <div class="skill-category">
+                        <h3>
+                            <span class="skill-icon">🎨</span>
+                            Frontend
+                        </h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">React.js</span>
+                            <span class="skill-badge">Angular</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                            <span class="skill-badge">jQuery</span>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div class="contact-content">
-                            <h4>Phone</h4>
-                            <p>+977 9868153336</p>
+                    <div class="skill-category">
+                        <h3>
+                            <span class="skill-icon">☁️</span>
+                            Database & Cloud
+                        </h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">SQL Server</span>
+                            <span class="skill-badge">T-SQL</span>
+                            <span class="skill-badge">AWS Lambda</span>
+                            <span class="skill-badge">DynamoDB</span>
+                            <span class="skill-badge">S3</span>
+                            <span class="skill-badge">API Gateway</span>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <div class="contact-content">
-                            <h4>LinkedIn</h4>
-                            <p>linkedin.com/in/adish-ghimire</p>
+                    <div class="skill-category">
+                        <h3>
+                            <span class="skill-icon">🛠️</span>
+                            Tools & Practices
+                        </h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Git</span>
+                            <span class="skill-badge">REST APIs</span>
+                            <span class="skill-badge">Design Patterns</span>
+                            <span class="skill-badge">OOP</span>
+                            <span class="skill-badge">Software Architecture</span>
+                            <span class="skill-badge">VS Code</span>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </div>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" aria-label="Education section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>Education & Certifications</h2>
+                </div>
+                <div class="education-grid" role="list">
+                    <div class="education-card" role="listitem">
+                        <div class="education-header">
+                            <div class="degree-icon" aria-hidden="true">🎓</div>
+                            <div class="degree-info">
+                                <h3>Master of Computer Science (MCS)</h3>
+                                <p class="institution">Lincoln University College</p>
+                                <p class="timeline-info">2025 – Present</p>
+                            </div>
+                        </div>
+                        <div class="education-content">
+                            <p>Pursuing advanced studies in Computer Science with focus on software architecture, system design, and enterprise-level application development.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-card" role="listitem">
+                        <div class="education-header">
+                            <div class="degree-icon" aria-hidden="true">📚</div>
+                            <div class="degree-info">
+                                <h3>Bachelor of Science in Computer Science & IT</h3>
+                                <p class="institution">Tribhuvan University</p>
+                                <p class="timeline-info">2017 – 2021</p>
+                            </div>
+                        </div>
+                        <div class="education-content">
+                            <p>Comprehensive foundation in Computer Science covering programming, data structures, algorithms, databases, and software engineering principles.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-card" role="listitem">
+                        <div class="education-header">
+                            <div class="degree-icon" aria-hidden="true">🏆</div>
+                            <div class="degree-info">
+                                <h3>Mastering Software Architecture</h3>
+                                <p class="institution">Professional Workshop</p>
+                                <p class="timeline-info">Completed</p>
+                            </div>
+                        </div>
+                        <div class="education-content">
+                            <p>Specialized training focused on system design, scalability patterns, enterprise architecture, and advanced software engineering practices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEACHING SECTION -->
+        <section id="teaching" aria-label="Teaching expertise section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>Teaching Expertise</h2>
+                </div>
+                <div class="teaching-grid" role="list">
+                    <div class="teaching-card" role="listitem">
+                        <div class="teaching-icon" aria-hidden="true">💻</div>
+                        <h3>Programming Languages</h3>
+                        <p>Computer Programming in C, Object-Oriented Programming in C++, Java Programming, Python Basics</p>
+                    </div>
+
+                    <div class="teaching-card" role="listitem">
+                        <div class="teaching-icon" aria-hidden="true">📊</div>
+                        <h3>Core Computer Science</h3>
+                        <p>Data Structures & Algorithms, Database Management System (DBMS), Web Technology & Programming</p>
+                    </div>
+
+                    <div class="teaching-card" role="listitem">
+                        <div class="teaching-icon" aria-hidden="true">🏗️</div>
+                        <h3>Software Engineering</h3>
+                        <p>Software Engineering, Object-Oriented Analysis & Design, SDLC and System Design, Design Patterns</p>
+                    </div>
+
+                    <div class="teaching-card" role="listitem">
+                        <div class="teaching-icon" aria-hidden="true">🤖</div>
+                        <h3>Advanced Topics</h3>
+                        <p>Artificial Intelligence, E-Commerce Systems, Enterprise Architecture, Cloud Computing</p>
+                    </div>
+
+                    <div class="teaching-card" role="listitem">
+                        <div class="teaching-icon" aria-hidden="true">👥</div>
+                        <h3>Teaching Strengths</h3>
+                        <p>Practical concept-oriented approach, Strong classroom management, Industry-oriented examples, Project-based learning</p>
+                    </div>
+
+                    <div class="teaching-card" role="listitem">
+                        <div class="teaching-icon" aria-hidden="true">🎯</div>
+                        <h3>Student Development</h3>
+                        <p>Ability to simplify complex concepts, Experience guiding programming projects, Mentoring & lab sessions, Industry-practical skills</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section id="blog" aria-label="Blog section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>Latest Articles</h2>
+                </div>
+                <div class="blog-grid" role="feed">
+                    <article class="blog-card" role="article">
+                        <div class="blog-header">
+                            <span class="blog-category">ASP.NET Core</span>
+                            <h3 class="blog-title">Building Scalable REST APIs with ASP.NET Core</h3>
+                            <p class="blog-date">📅 December 15, 2024</p>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Learn how to design and implement RESTful APIs using ASP.NET Core with best practices for scalability, performance, and maintainability. We'll explore middleware, dependency injection, and proper error handling.</p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">ASP.NET Core</span>
+                                <span class="blog-tag">REST API</span>
+                                <span class="blog-tag">C#</span>
+                            </div>
+                            <div class="blog-footer">
+                                <span class="blog-author">By Adish Ghimire</span>
+                                <span class="blog-read-more" role="button" tabindex="0">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" role="article">
+                        <div class="blog-header">
+                            <span class="blog-category">Database Design</span>
+                            <h3 class="blog-title">SQL Server Optimization Techniques for Performance</h3>
+                            <p class="blog-date">📅 December 10, 2024</p>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Deep dive into SQL Server optimization techniques including indexing strategies, query optimization, execution plans analysis, and performance tuning. Improve your database query performance significantly.</p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">SQL Server</span>
+                                <span class="blog-tag">Database</span>
+                                <span class="blog-tag">Performance</span>
+                            </div>
+                            <div class="blog-footer">
+                                <span class="blog-author">By Adish Ghimire</span>
+                                <span class="blog-read-more" role="button" tabindex="0">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" role="article">
+                        <div class="blog-header">
+                            <span class="blog-category">Cloud Architecture</span>
+                            <h3 class="blog-title">Serverless Architecture with AWS Lambda and API Gateway</h3>
+                            <p class="blog-date">📅 December 5, 2024</p>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Explore serverless architecture patterns using AWS Lambda, API Gateway, and DynamoDB. Learn how to build cost-effective, scalable applications without managing infrastructure.</p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">AWS</span>
+                                <span class="blog-tag">Lambda</span>
+                                <span class="blog-tag">Serverless</span>
+                            </div>
+                            <div class="blog-footer">
+                                <span class="blog-author">By Adish Ghimire</span>
+                                <span class="blog-read-more" role="button" tabindex="0">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" role="article">
+                        <div class="blog-header">
+                            <span class="blog-category">Design Patterns</span>
+                            <h3 class="blog-title">SOLID Principles in .NET Development</h3>
+                            <p class="blog-date">📅 November 28, 2024</p>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Understand and apply SOLID principles in your .NET projects. We'll cover Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion with practical examples.</p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">SOLID</span>
+                                <span class="blog-tag">Design Patterns</span>
+                                <span class="blog-tag">.NET</span>
+                            </div>
+                            <div class="blog-footer">
+                                <span class="blog-author">By Adish Ghimire</span>
+                                <span class="blog-read-more" role="button" tabindex="0">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" role="article">
+                        <div class="blog-header">
+                            <span class="blog-category">Frontend Integration</span>
+                            <h3 class="blog-title">React.js with ASP.NET Core: Full-Stack Development</h3>
+                            <p class="blog-date">📅 November 20, 2024</p>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Master full-stack development by combining React.js frontend with ASP.NET Core backend. Learn about API integration, authentication, and deployment strategies for production-ready applications.</p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">React</span>
+                                <span class="blog-tag">ASP.NET Core</span>
+                                <span class="blog-tag">Full-Stack</span>
+                            </div>
+                            <div class="blog-footer">
+                                <span class="blog-author">By Adish Ghimire</span>
+                                <span class="blog-read-more" role="button" tabindex="0">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" role="article">
+                        <div class="blog-header">
+                            <span class="blog-category">Teaching & Learning</span>
+                            <h3 class="blog-title">Effective Teaching Strategies for Programming Concepts</h3>
+                            <p class="blog-date">📅 November 15, 2024</p>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Share insights on teaching complex programming concepts effectively. Covering practical lab sessions, project-based learning, mentoring approaches, and bridging the gap between theory and industry practice.</p>
+                            <div class="blog-tags">
+                                <span class="blog-tag">Teaching</span>
+                                <span class="blog-tag">Education</span>
+                                <span class="blog-tag">Mentoring</span>
+                            </div>
+                            <div class="blog-footer">
+                                <span class="blog-author">By Adish Ghimire</span>
+                                <span class="blog-read-more" role="button" tabindex="0">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" aria-label="Contact section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-content">
+                                <h4>Email</h4>
+                                <p><a href="mailto:adish.ghimire12@gmail.com">adish.ghimire12@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true"><i class="fas fa-phone"></i></div>
+                            <div class="contact-content">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+977-9868153336">+977 9868153336</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-content">
+                                <h4>Location</h4>
+                                <p>Kalanki, Kathmandu, Nepal</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true"><i class="fab fa-linkedin"></i></div>
+                            <div class="contact-content">
+                                <h4>LinkedIn</h4>
+                                <p><a href="https://linkedin.com/in/adish-ghimire" target="_blank" rel="noopener noreferrer">linkedin.com/in/adish-ghimire</a></p>
+                            </div>
+                        </div>
+                        <div class="social-links" aria-label="Social media links">
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://wa.me/977986815333" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="mailto:adish.ghimire12@gmail.com" class="social-link" aria-label="Gmail" title="Gmail"><i class="fas fa-envelope"></i></a>
+                            <a href="https://linkedin.com/in/adish-ghimire" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="What's this about?" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Your message..." autocomplete="off"></textarea>
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- FOOTER -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-container">
             <div class="footer-content">
-                <p class="footer-text">© 2024 Adish Ghimire. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" title="GitHub">🐙</a>
-                    <a href="#" class="social-link" title="LinkedIn">💼</a>
-                    <a href="#" class="social-link" title="Email">📧</a>
-                    <a href="#" class="social-link" title="Phone">📱</a>
+                <p class="footer-text">&copy; 2024 Adish Ghimire. All rights reserved.</p>
+                <div class="social-links" aria-label="Social media links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/adish-ghimire" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:adish.ghimire12@gmail.com" class="social-link" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <hr>
             <div class="footer-bottom">
                 <p class="copyright">Crafted with passion for software excellence</p>
-                <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+                <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
             </div>
         </div>
     </footer>
 
     <script>
-        // ────────────────────────────────────────────────────────────
-        // NAVBAR SCROLL DETECTION
-        // ────────────────────────────────────────────────────────────
-        
+        const debounce = (func, delay) => {
+            let timeoutId;
+            return (...args) => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => func(...args), delay);
+            };
+        };
+
         const navbar = document.getElementById('navbar');
-        
-        window.addEventListener('scroll', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        const handleScroll = debounce(() => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+        }, 10);
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // ────────────────────────────────────────────────────────────
-        // TYPING EFFECT
-        // ────────────────────────────────────────────────────────────
-        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                navLinks.style.display = 'none';
+            });
+        });
+
         const typingEffect = document.getElementById('typingEffect');
         const phrases = ['Full-Stack .NET Developer', 'ASP.NET Core Specialist', 'Cloud Architect', 'Tech Educator'];
         let phraseIndex = 0;
@@ -2272,7 +2088,7 @@
 
         function typeEffect() {
             const currentPhrase = phrases[phraseIndex];
-            
+
             if (!isDeleting && charIndex < currentPhrase.length) {
                 typingEffect.textContent = currentPhrase.substring(0, charIndex + 1);
                 charIndex++;
@@ -2293,39 +2109,22 @@
             }
         }
 
-        typeEffect();
+        if (typingEffect) typeEffect();
 
-        // ────────────────────────────────────────────────────────────
-        // INTERSECTION OBSERVER FOR ANIMATIONS
-        // ────────────────────────────────────────────────────────────
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeUp 0.8s ease-out forwards`;
-                    entry.target.style.opacity = '0';
-                    setTimeout(() => {
-                        entry.target.style.animation = `fadeUp 0.8s ease-out forwards`;
-                        entry.target.style.opacity = '1';
-                    }, 10);
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.style.animation = `fadeUp 0.6s ease-out forwards`;
+                    entry.target.dataset.animated = 'true';
                 }
             });
         }, observerOptions);
 
-        // Observe all section containers
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        document.querySelectorAll('section, .stat-card, .timeline-card, .skill-category, .education-card, .teaching-card, .blog-card').forEach(element => {
+            observer.observe(element);
         });
 
-        // ────────────────────────────────────────────────────────────
-        // SMOOTH SCROLL NAVIGATION
-        // ────────────────────────────────────────────────────────────
-        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -2333,218 +2132,109 @@
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        navLinks.style.display = 'none';
                     }
                 }
             });
         });
 
-        // ────────────────────────────────────────────────────────────
-        // ACTIVE NAV LINK
-        // ────────────────────────────────────────────────────────────
-        
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', () => {
+        const navLinkElements = document.querySelectorAll('.nav-link');
+        const updateActiveNav = debounce(() => {
             let current = '';
-            
             document.querySelectorAll('section').forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
+                if (pageYOffset >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
-
-            navLinks.forEach(link => {
+            navLinkElements.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').slice(1) === current) {
                     link.classList.add('active');
                 }
             });
-        });
+        }, 50);
 
-        // ────────────────────────────────────────────────────────────
-        // BACK TO TOP BUTTON
-        // ────────────────────────────────────────────────────────────
-        
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+
         const backToTop = document.getElementById('backToTop');
-        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
             }
-        });
+        }, { passive: true });
 
         backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ────────────────────────────────────────────────────────────
-        // FORM VALIDATION & SUBMISSION
-        // ────────────────────────────────────────────────────────────
-        
-        const contactForm = document.querySelector('.contact-form');
-        
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && subject && message) {
-                // Show success message
-                const button = contactForm.querySelector('button');
-                const originalText = button.textContent;
-                button.textContent = '✓ Message Sent!';
-                button.style.background = '#10B981';
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button after 2 seconds
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = 'var(--primary)';
-                }, 2000);
-            }
-        });
-
-        // ────────────────────────────────────────────────────────────
-        // HOVER LIFT EFFECT FOR CARDS
-        // ────────────────────────────────────────────────────────────
-        
-        document.querySelectorAll('.stat-card, .timeline-card, .project-card, .service-card, .skill-category').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-4px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // ────────────────────────────────────────────────────────────
-        // COUNTER ANIMATION FOR STATISTICS
-        // ────────────────────────────────────────────────────────────
-        
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            const counter = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    element.textContent = target + (element.textContent.includes('+') ? '+' : '');
-                    clearInterval(counter);
-                } else {
-                    element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : '');
-                }
-            }, 16);
+        const contactForm = document.getElementById('contactForm');
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
 
-        // Observe stat cards for counter animation
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const number = entry.target.querySelector('.stat-number');
-                    if (number && !number.dataset.animated) {
-                        const text = number.textContent;
-                        const target = parseInt(text);
-                        animateCounter(number, target);
-                        number.dataset.animated = 'true';
-                    }
-                    statObserver.unobserve(entry.target);
+        function validateForm(formData) {
+            const errors = {};
+            if (!formData.name.trim()) errors.name = 'Name is required';
+            if (!validateEmail(formData.email)) errors.email = 'Valid email is required';
+            if (!formData.subject.trim()) errors.subject = 'Subject is required';
+            if (!formData.message.trim()) errors.message = 'Message is required';
+            return errors;
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                };
+
+                const errors = validateForm(formData);
+
+                if (Object.keys(errors).length === 0) {
+                    const button = contactForm.querySelector('button');
+                    const originalText = button.textContent;
+                    button.textContent = '✓ Message Sent!';
+                    button.style.background = 'var(--success)';
+                    button.disabled = true;
+
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = '';
+                        button.disabled = false;
+                    }, 3000);
+                } else {
+                    alert('Please fix the following errors:\n' + Object.values(errors).join('\n'));
                 }
             });
-        }, { threshold: 0.5 });
+        }
 
-        document.querySelectorAll('.stat-card').forEach(card => {
-            statObserver.observe(card);
-        });
-
-        // ────────────────────────────────────────────────────────────
-        // PREMIUM BUTTON INTERACTIONS
-        // ────────────────────────────────────────────────────────────
-        
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('mousedown', function() {
-                this.style.transform = 'scale(0.98)';
+        document.querySelectorAll('.blog-read-more').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const title = this.closest('.blog-card').querySelector('.blog-title').textContent;
+                alert(`Opening article: "${title}"\n\nThis would navigate to the full blog post.`);
             });
-            
-            button.addEventListener('mouseup', function() {
-                this.style.transform = 'scale(1)';
+
+            btn.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') this.click();
             });
         });
 
-        // ────────────────────────────────────────────────────────────
-        // BLOG CARD INTERACTIONS
-        // ────────────────────────────────────────────────────────────
-        
-        document.querySelectorAll('.blog-card').forEach(card => {
-            const readMoreBtn = card.querySelector('.blog-read-more');
-            
-            if (readMoreBtn) {
-                readMoreBtn.addEventListener('click', function() {
-                    // Get blog title for the article
-                    const title = card.querySelector('.blog-title').textContent;
-                    
-                    // Show alert (in production, this would navigate to the full blog post)
-                    alert(`Opening article: "${title}"\n\nIn a production environment, this would navigate to the full blog post page.`);
-                });
-
-                // Add cursor pointer feedback
-                readMoreBtn.style.cursor = 'pointer';
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+                hamburger.click();
             }
-        });
-
-        // Observer for blog cards animation
-        const blogObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeUp 0.8s ease-out forwards`;
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.blog-card').forEach(card => {
-            blogObserver.observe(card);
-        });
-
-        // Observer for education cards animation
-        const educationObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeUp 0.8s ease-out forwards`;
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.education-card').forEach(card => {
-            educationObserver.observe(card);
-        });
-
-        // Observer for teaching cards animation
-        const teachingObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeUp 0.8s ease-out forwards`;
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.teaching-card').forEach(card => {
-            teachingObserver.observe(card);
         });
     </script>
 </body>
